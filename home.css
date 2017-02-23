@@ -1,0 +1,33 @@
+body {
+	background: nav, center;
+	background-image : url("home.jpg");
+	background-attachment : fixed;
+	background-repeat : no-repeat;
+	
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+	background-size: cover; /
+}
+
+#content {
+	display : block;
+	margin : 0 auto;
+	text-align : center;
+	color : white;
+	height: 200px;
+	line-height: 200px;
+	white-space: nowrap;
+	text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
+	
+}
+
+input {
+background-color:black;
+border: white solid 2px;
+color : white;
+border-radius:50px;
+text-decoration : none;
+width : 60px;
+height : 60px;
+}
+
+

@@ -1,0 +1,34 @@
+body {
+	background: nav, center;
+	background-image : url("home.jpg");
+	background-attachment : fixed;
+	background-repeat : no-repeat;
+	
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+	background-size: cover; /
+}
+
+#content {
+	display : block;
+	margin-left : 10px;
+	color : white;
+	text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
+	line-height : 200%;
+}
+
+h1 {
+	text-align : center;
+	
+}
+input{
+	border-radius:20px;
+}
+
+.button {
+	border: white solid 1px;
+	text-decoration : none;
+	background-color:black;
+	color : white;
+	
+	margin-left : 100px;
+}
