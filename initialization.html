@@ -14,28 +14,37 @@
 				<br/>
 				<br/>
 				<br/>
-				<p>
-					nombre d'adversaire : 
-					<input type="number" name="enemy" value="1" min="1" max="10"/>
-					
-					<!--a choisir entre les deux avec php
-					<select name="enemy">
-						<?php
-							for(int i = 1; i <= 10; i++) {
-								echo "<option>"i"</option>";
-							}
-						?>
-					</select>
-					-->
-					<br />
-					<br/>
-					carte :
-					<select name="enemy">
-						<option>carte 1</option>
-					</select>
-				</p>
-				<br/>
-				<input type="submit" value="Commencer" class="button"/>
+				<table>
+					<tr>
+						<td>
+							nombre d'adversaire : 
+							<input type="number" name="enemy" value="1" min="1" max="10"/>
+							
+							<!--a choisir entre les deux avec php
+								<select name="enemy">
+									<?php
+										for(int i = 1; i <= 10; i++) {
+											echo "<option>"i"</option>";
+										}
+									?>
+								</select>
+							-->
+						</td>
+					</tr>
+					<tr>
+						<td>
+							carte :
+							<select name="enemy">
+								<option>carte 1</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td id="button">
+							<input type="submit" value="Commencer" class="button"/>
+						</td>
+					</tr>
+				</table>
 			</form>
 		</div>
 	</body>
