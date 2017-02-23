@@ -3,7 +3,7 @@ body {
 	background-image : url("home.jpg");
 	background-attachment : fixed;
 	background-repeat : no-repeat;
-	
+	margin-top : 5em;
 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
 	background-size: cover; /
 }
@@ -26,9 +26,24 @@ input{
 
 .button {
 	border: white solid 1px;
-	text-decoration : none;
 	background-color:black;
 	color : white;
+	width : 10em;
+}
+
+table {
+	margin : auto;
+	width : 25em;
+	height : 10em;
+	border: white solid 1px;
+	background : SteelBlue;
 	
-	margin-left : 100px;
+	border-radius:20px;
+}
+
+td {
+	padding-left : 5px;
+}
+#button {
+	text-align : center;
 }
