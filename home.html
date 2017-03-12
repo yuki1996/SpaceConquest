@@ -8,8 +8,78 @@
 	</head>
 
 	<body>
-		<div id ="content">
-			<h1> Bienvenu(e) dans l'espace !</h1>
+		<div class="slideshow-container">
+			<div class="mySlides fade">
+				<img src="../images/commander.jpg" class="contents">
+				<pre class="contents">
+				  Bonjour Monsieur,
+				  Comment vous le savez notre planète est en danger. 
+				  Votre mission est de conquérir autant que planètes 
+				  que vous pouvez avant les adversaires les possédent tous.
+				  
+				</pre>
+			</div>
+
+			<div class="mySlides fade">
+				<img src="../images/guide.jpeg" class="img_content">
+				
+				<pre class="contents">
+					Sauve ton peuple et devient le conquérant de ta galaxie! 
+			
+				</pre>
+			</div>
+
+			<div class="mySlides fade">
+				<img src="../images/master.jpeg" class="img_content">
+				
+				<pre class="contents">
+					L'échec n'est pas acceptable!
+			
+				</pre>
+			</div>
+
+			 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			 <a class="next" onclick="plusSlides(1)">&#10095;</a>
+		</div>
+		<br>
+
+		<div style="text-align:center">
+			<span class="dot" onclick="currentSlide(1)"></span>
+			<span class="dot" onclick="currentSlide(2)"></span>
+			<span class="dot" onclick="currentSlide(3)"></span>
+		</div>
+
+		<script>
+			var slideIndex = 1;
+			showSlides(slideIndex);
+
+			function plusSlides(n) {
+			  showSlides(slideIndex += n);
+			}
+
+			function currentSlide(n) {
+			  showSlides(slideIndex = n);
+			}
+
+			function showSlides(n) {
+				var i;
+				var slides = document.getElementsByClassName("mySlides");
+				var dots = document.getElementsByClassName("dot");
+				if (n > slides.length) {slideIndex = 1}
+				if (n < 1) {slideIndex = slides.length}
+				for (i = 0; i < slides.length; i++) {
+				  slides[i].style.display = "none";
+				}
+				for (i = 0; i < dots.length; i++) {
+				  dots[i].className = dots[i].className.replace(" active", "");
+				}
+				slides[slideIndex-1].style.display = "block";
+				dots[slideIndex-1].className += " active";
+			}
+
+		</script>
+		
+		<div id ="c">
 			<form method="post" action="initialization.html">
 				<input type="submit" value="Entrer" />
 			</form>
