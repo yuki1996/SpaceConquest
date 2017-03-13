@@ -32,3 +32,8 @@ Planet.prototype.setColonist = function(c) {
 Planet.prototype.getPopulation = function() {
 	return this.population;
 }
+
+
+Planet.prototype.getCoord() = function() {
+		return this.coord;
+}

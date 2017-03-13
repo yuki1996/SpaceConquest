@@ -46,3 +46,8 @@ Enemy.prototype.canPlay() = function() {
 	this.getSetPlanet.size() != 0;
 }
 }
+
+
+Enemy.prototype.getCoord() = function() {
+		return this.coord;
+}

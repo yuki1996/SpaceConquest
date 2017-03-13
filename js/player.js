@@ -53,6 +53,10 @@ Player.prototype.hasPlanet() = function(p) {
 }
 
 //s'il peut encore jouer
-player.prototype.canPlay() = function() {
-	this.getSetPlanet.size() != 0;
+Player.prototype.canPlay() = function() {
+	return this.getSetPlanet.size() != 0;
+}
+
+Player.prototype.getCoord() = function() {
+		return this.coord;
 }

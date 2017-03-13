@@ -15,6 +15,9 @@ function Game(nbEnemy, w, h) {
 	
 	
 }
+Gmae.prototype.getTabPlayer() = function() {
+	return tabPlayer;
+};
 
 Game.prototype.start() {
 	var coord = calculCoord();
