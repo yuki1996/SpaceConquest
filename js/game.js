@@ -3,65 +3,59 @@ function Game(nbEnemy, w, h) {
 		throw new Error("Game");
 	} 
 	this.nbEnemy = nbEnemy;
-	this.getNbEnemy = function() {
-		return NbEnemy;
-	}
-	
+
 	this.width = w;
 	this.height = h;
-	this.tabGalaxy = new Array[h][w];
-	this.tabPlayer = new Array[nbEnemy + 1];
+	this.tabGalaxy = new Array(h, w);
+	this.tabPlayer = new Array(nbEnemy + 1);
 	this.player = null;
-	
-	
+	var pop = this.PopulationRandom();
+	var coord = new Coord(0, 1);
+  var planet = new Planet(coord, pop);
+	this.player = new Player(planet);
 }
-Gmae.prototype.getTabPlayer() = function() {
-	return tabPlayer;
-};
 
-Game.prototype.start() {
-	var coord = calculCoord();
-	this.player = new Player(new Planet(coord, PopulationRandom());
-	
+Game.prototype.start = function () {
 	this.tabPlayer[0] = this.player;
-	var tabSet = new Array[player.getSetPlanet()];
+	var tabSet = new Array[this.player.getSetPlanet()]();
 	this.tabGalaxy[coord.getX()][coord.getY()] = tabSet[0];
-	for (int i = 0; i < this.nbEnemy; i++) {
-		
-		coord = calculCoord();
-		this.tabEnemy[0] = new Enemy(new Planet(coord, PopulationRandom()));
-		var tabSet= new Array[tabEnemy[0].getSetPlanet()];
-		this.tabGalaxy[coord.getX()][coord.getY()] = tabSet[0];
+	for (var i = 0; i < this.nbEnemy; i++) {
+		coord = this.calculCoord();
+		this.tabEnemy[0] = new Enemy(new Planet(coord, this.PopulationRandom()));
+		var tabSet0= new Array[this.tabEnemy[0].getSetPlanet()]();
+		this.tabGalaxy[coord.getX()][coord.getY()] = tabSet0[0];
 	}
 	
 	//outil
 	
-	tabFull() {
-		for (int i = 0; i < this.height; i++) {
-			for (int i = 0; i < this.width; i++) {
-				if (tabGalaxy[i][j] == null) {
-					return false);
+	this.tabFull = function() {
+		for (var i = 0; i < this.height; i++) {
+			for (var j = 0; i < this.width; i++) {
+				if (this.tabGalaxy[i][j] === null) {
+					return false;
 				}
 			}
 		}
 		return true;
-	}
+	};
 	
-	calculCoord() {
-		if (tabFull()) {
+	this.calculCoord = function() {
+		if (this.tabFull()) {
 			throw new Error("plus de place");
 		}
 		var i = Math.floor(Math.random() * this.width);
 		var j = Math.floor(Math.random() * this.height);
-		while (tabGalaxy[i][j] != null) {
+		while (this.tabGalaxy[i][j] !== null) {
 			i = Math.floor(Math.random() * this.width);
 			j = Math.floor(Math.random() * this.height);
 		}
+		alert("no");
 		return new Coord(i,j);
-	}
+	};
 	
-	
-	PopulationRandom() {
-		return Math.floor((Math.random() * 200) + 1);
-	}
-}
+};
+
+
+Game.prototype.PopulationRandom = function () {
+	return Math.floor((Math.random() * 200) + 1);
+};

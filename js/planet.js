@@ -1,5 +1,6 @@
+
 function Planet(c, p) {
-	if (c ! insteanceOf Coord || p ! insteanceOf Planet) {
+	if (!(c instanceof (Coord)) || p < 0) {
 		throw new Error("Planet");
 	} 
 	//Coordonnée de la planète
@@ -19,7 +20,7 @@ Planet.prototype.setPopulation = function(p) {
 		throw new Error("setPopulation");
 	} 
 	this.population = p;
-}
+};
 
 //modifie le nombre de colons partis en mission
 Planet.prototype.setColonist = function(c) {
@@ -27,13 +28,5 @@ Planet.prototype.setColonist = function(c) {
 		throw new Error("setColonist");
 	}
 	this.colonist = c;
-}
+};
 
-Planet.prototype.getPopulation = function() {
-	return this.population;
-}
-
-
-Planet.prototype.getCoord() = function() {
-		return this.coord;
-}
