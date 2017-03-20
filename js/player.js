@@ -2,16 +2,11 @@ function Player(p) {
 		if (!(p instanceof Planet)) {
 		throw new Error("Player");
 	} 
-	
 	this.coord = p.coord;
 	this.allPopulation = p.population;
-	
-	//ensemble des planètes du joueur
-	this.getSetPlanet = function() {
-		var mySet = new Set();
-		mySet.add(p);
-		return mySet;
-	};
+	var mySet = new Set();
+	mySet.add(p);
+	this.getSetPlanet = mySet;
 }
 
 //ajout de la planète p 

@@ -1,4 +1,3 @@
-
 function Planet(c, p) {
 	if (!(c instanceof (Coord)) || p < 0) {
 		throw new Error("Planet");
