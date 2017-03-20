@@ -1,6 +1,5 @@
 <?PHP
 session_start();
-	
 	if (!isset($_SESSION['player'])) {
 		$_SESSION['player'] = true;
 		$_SESSION['ENEMY'] = $_POST['enemy'];
@@ -26,7 +25,6 @@ session_start();
 	
 		<script>
 			var game = new Game(<?php echo $_SESSION['ENEMY'];?>,10,10);
-			alert("enemy : " + game.nbEnemy);
 			game.start();
 		</script>
 	</body>
