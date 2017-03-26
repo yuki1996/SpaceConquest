@@ -1,16 +1,12 @@
 function Enemy(p) {
-	if (! (p  instanceof Planet)) {
-		throw new Error("Enemy");
-	} 
+	
+	this.allPopulation = p.population;
 	//ensemble des planètes de l'ennemie
-	var mySet = new Set();
-	mySet.add(p);
-	this.getSetPlanet = mySet;
 	
+	//ensemble des planètes du joueur
+	this.getSetPlanet = new Array();
+	this.getSetPlanet.push(p);
 	
-	//Coordonnée de la planète 
-	this.coord = p.coord;
-		
 }
 
 
@@ -18,7 +14,7 @@ function Enemy(p) {
 //ajout de la planète p 
 Enemy.prototype.addPlanet = function(p) {
 	if (p instanceof Planet) {
-		this.getSetPlanet.add(p);
+		this.getPlanet.push(p);
 	}
 };
 
@@ -26,25 +22,21 @@ Enemy.prototype.addPlanet = function(p) {
 //Supprime la planète p
 Enemy.prototype.removePlanet = function(p) {
 	if (p instanceof Planet) {
-		this.getSetPlanet.delete(p);
+		this.getPlanet.delete(p);
 	}
 };
-
 
 // indique si p fait partie de l'ensemble des planètes de l'ennemie
 Enemy.prototype.hasPlanet = function(p) {
 	if (p instanceof Planet) {
-		return this.getSetPlanet.has(p);
+		return this.getPlanet.has(p);
 	}
 	return false;
 };
 
 //s'il peut encore jouer
 Enemy.prototype.canPlay = function() {
-	return this.getSetPlanet.size !== 0;
+	return this.getSetPlanet.length !== 0;
 };
 
-Enemy.prototype.getCoord = function() {
-		return this.coord;
-};
 

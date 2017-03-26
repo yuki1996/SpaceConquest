@@ -1,18 +1,15 @@
 function Player(p) {
-		if (!(p instanceof Planet)) {
-		throw new Error("Player");
-	} 
-	this.coord = p.coord;
 	this.allPopulation = p.population;
-	var mySet = new Set();
-	mySet.add(p);
-	this.getSetPlanet = mySet;
+	
+	//ensemble des planètes du joueur
+	this.getSetPlanet = new Array();
+	this.getSetPlanet.push(p);
 }
 
 //ajout de la planète p 
 Player.prototype.addPlanet = function(p) {
 	if (p instanceof Planet) {
-		this.getSetPlanet.add(p);
+		this.getSetPlanet.push(p);
 	}
 };
 
@@ -20,16 +17,6 @@ Player.prototype.addPlanet = function(p) {
 Player.prototype.removePlanet = function(p) {
 	if (p instanceof Planet) {
 		this.getSetPlanet.delete(p);
-		if (this.getSetPlanet.size() === 0) {
-			this.coord = null;
-			
-		}
-		var c = p.getCoord();
-		if (c == this.coord) {
-			
-			var tabSet= new Array[this.getSetPlanet()]();
-			this.coord = tabSet[0].getCoord();
-		}
 		this.allPopulation -= p.getPopulation();
 	}
 };
@@ -44,9 +31,6 @@ Player.prototype.hasPlanet = function(p) {
 
 //s'il peut encore jouer
 Player.prototype.canPlay = function() {
-	return this.getSetPlanet.size() !== 0;
+	return this.getSetPlanet.length !== 0;
 };
 
-Player.prototype.getCoord = function() {
-		return this.coord;
-};

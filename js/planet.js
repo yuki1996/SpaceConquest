@@ -1,7 +1,5 @@
+
 function Planet(c, p) {
-	if (!(c instanceof (Coord)) || p < 0) {
-		throw new Error("Planet");
-	} 
 	//Coordonnée de la planète
 	this.coord = c;
 		
@@ -10,7 +8,8 @@ function Planet(c, p) {
 	
 	//colons parmi pop local partis en mission
 	this.colonist = 0;
-	
+	//Coordonnée de la planète
+	this.proprietaire = "neutre";
 }
 
 //modifie la population local
@@ -29,3 +28,6 @@ Planet.prototype.setColonist = function(c) {
 	this.colonist = c;
 };
 
+Planet.prototype.addProprietaire = function(player) {
+	this.proprietaire = player;
+};
