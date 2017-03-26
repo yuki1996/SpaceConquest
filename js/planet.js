@@ -1,31 +1,46 @@
-
-function Planet(c, p) {
+function Planet(c, n) {
+	if (!(c instanceof (Coord)) || n < 0) {
+		throw new Error("Planet");
+	} 
 	//Coordonnée de la planète
 	this.coord = c;
 		
 	//population locale
-	this.population = p;
+	this.population = n;
 	
 	//colons parmi pop local partis en mission
 	this.colonist = 0;
 	//Coordonnée de la planète
 	this.proprietaire = "neutre";
+	
+	
+  // chef
+  this.leader = null; 
 }
 
-//modifie la population local
-Planet.prototype.setPopulation = function(p) {
-	if (0 > p) {
-		throw new Error("setPopulation");
+Planet.prototype.buildSpaceship = function(n, p) {
+  if (isNaN(n)) {
+		throw new Error("Not a number");
 	} 
-	this.population = p;
+  if (!(p instanceof Planet))  {
+		throw new Error("Not a planet");
+	}
+  if (this.population === 0) {
+    throw new Error("This is a neutral planet");
+  }
+  if (n > this.population) {
+		throw new Error("Not enough people on this planet");
+	}
+  this.population =  this.population - n; 
+  return new Spaceship(this, n, p);
 };
 
-//modifie le nombre de colons partis en mission
-Planet.prototype.setColonist = function(c) {
-	if (0 > c || c > this.population) {
-		throw new Error("setColonist");
-	}
-	this.colonist = c;
+Planet.prototype.getPopulation = function() {
+  return population;
+};
+
+Planet.prototype.getLeader = function() {
+  return leader;
 };
 
 Planet.prototype.addProprietaire = function(player) {
