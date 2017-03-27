@@ -14,7 +14,7 @@ body {
 	background-repeat : no-repeat;
 	background-size: cover;
 }
-#navPlayer {
+form{
 	width : 200px;
 	display:inline-block;
 	float : left;
@@ -30,4 +30,8 @@ border-width: 1px;
 
 border : solid black ;
 border-radius : 10px;
+}
+
+input, select{
+	border-radius:20px;
 }

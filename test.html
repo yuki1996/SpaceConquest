@@ -16,64 +16,11 @@
 
 	<body>	
 
-<script> 
-	$(function () {
-    var dialog, form,
 
-	//src = $("#planetSrc"),
-	//dst = $("#planetDst"),
-	//colons = $("#colons"),
-	
-
-	dialog = $("#dialog-form").dialog({
-        autoOpen: false,
-        height: 400,
-        width: 400,
-            buttons: [
-            {
-                text: "OK",
-                click: function() {
-                    $( this ).dialog( "close" );
-                }
-            }
-        ]
-    });
-     $( "#attack" ).click(function( event ) {
-        // cette ligne est très importante pour empêcher les liens ou les boutons de rediriger
-        // vers une autre page avant que l'usager ait cliqué dans le popup
-        event.preventDefault();
-        // affichage du popup
-        $( "#dialog-form" ).dialog( "open" );
-    });
-    
-    
-    $("#planete").selectmenu({ width: 200 });
-    
-    
-    $("#flotte").selectmenu({ width: 200 });
-});
     </script>
- <div id="dialog-form" title="selectionne la planete">
+ <div id="dialog-form" title="information la planete">
 		
-		  <label for="planete">planete</label>
-                <select name="planete" id="planete">
-                    <option value="0">planete0</option>
-                    <option value="1">planete1</option>
-                    <option value="2">planete2</option>
-                </select>
-                <br>
-                <br>
-                  <label for="flotte">flotte choisie</label>
-                <select name="flotte" id="flotte">
-                    <option value="0">flotte0</option>
-                    <option value="1">flotte1</option>
-                    <option value="2">flotte2</option>
-                </select>
-                
-                <br>
-                <br>
-                <label for="qte">nombre soldat</label>
-                <input type="number" name="qte" value="1" min="1" max="200"/>
+		  <p>bla bla bla</p>
      </div>           
     <button id="attack">attaque</button>
 	</body>
