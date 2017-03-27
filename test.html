@@ -20,32 +20,15 @@
 	$(function () {
     var dialog, form,
 
-	src = $("#planetSrc"),
-	dst = $("#planetDst"),
-	colons = $("#colons"),
+	//src = $("#planetSrc"),
+	//dst = $("#planetDst"),
+	//colons = $("#colons"),
 	
-	function attack() {
-		
-        var valid = true;
-        //verif colons
-        valid = valid && checkLength(name, "username", 3, 16);
-
-        if (valid) {
-			//mettre dans game
-            $("#users tbody").append("<tr>" +
-                "<td>" + src.val() + "</td>" +
-                "<td>" + dst.val() + "</td>" +
-                "<td>" + colons.val() + "</td>" +
-                "</tr>");
-            dialog.dialog("close");
-        }
-        return valid;
-    }
 
 	dialog = $("#dialog-form").dialog({
         autoOpen: false,
         height: 400,
-        width: 450,
+        width: 400,
             buttons: [
             {
                 text: "OK",
@@ -64,10 +47,10 @@
     });
     
     
-    $("#planete").selectmenu({ width: 300 });
+    $("#planete").selectmenu({ width: 200 });
     
     
-    $("#flotte").selectmenu({ width: 300 });
+    $("#flotte").selectmenu({ width: 200 });
 });
     </script>
  <div id="dialog-form" title="selectionne la planete">
