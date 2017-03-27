@@ -20,7 +20,7 @@
 		$width = $_POST['y'];
 		$coordx = rand (40, ($width - 40));
 		$coordy = rand (40, ($heigth - 40));
-		$Nbplanet = rand(1, 21);
+		$Nbplanet = rand(1, 23);
 		$req2 = 'INSERT INTO '.$carte.' (population, x, y, proprietaire, colonist, image) VALUES ('.$pop.', '.$coordx.', '.$coordy.', "Player", 0, "planet'.$Nbplanet.'.png")';
 		$connexion->exec($req2);
 		$enemy = $_POST['enemy'];
@@ -28,13 +28,13 @@
 			$pop = rand(10, 200);
 			$count = 1;
 			while ($count > 0) {
-				$coordx = rand (40, ($width - 40));
-				$coordy = rand (40, ($heigth - 40));
+				$coordx = rand (0, ($width - 60));
+				$coordy = rand (0, ($heigth - 60));
 				$req = "SELECT * FROM $carte where (x BETWEEN $coordx - 25 AND $coordx + 25) OR (y BETWEEN $coordy - 25 AND $coordy + 25)";
 				$res = $connexion -> query($req);
 				$count = $res->rowCount();
 			}
-			$Nbplanet = rand(1, 21);
+			$Nbplanet = rand(1, 23);
 			$req3 = 'INSERT INTO '.$carte.' (population, x, y, proprietaire, colonist, image) VALUES ('.$pop.', '.$coordx.', '.$coordy.', "Enemy'.$i.'", 0, "planet'.$Nbplanet.'.png")';
 			$connexion->exec($req3);
 		}
@@ -42,13 +42,13 @@
 			$pop = rand(10, 200);
 			$count = 1;
 			while ($count > 0) {
-				$coordx = rand (40, ($width - 40));
-				$coordy = rand (40, ($heigth - 40));
+				$coordx = rand (0, ($width - 60));
+				$coordy = rand (0, ($heigth - 60));
 				$req = "SELECT * FROM $carte where (x BETWEEN $coordx - 10 AND $coordx + 10) OR (y BETWEEN $coordy - 10 AND $coordy + 10)";
 				$res = $connexion -> query($req);
 				$count = $res->rowCount();
 			}
-			$Nbplanet = rand(1, 21);
+			$Nbplanet = rand(1, 23);
 			$req3 = 'INSERT INTO '.$carte.' (population, x, y, proprietaire, colonist, image) VALUES ('.$pop.', '.$coordx.', '.$coordy.', "Neutre'.$i.'", 0, "planet'.$Nbplanet.'.png")';
 			$connexion->exec($req3);
 		}
@@ -71,7 +71,7 @@
 	<body>
 		<div id ="content">
 			<form method="post" action="initialization.php">
-				<h1>Choisit les paramètres de ta partie</h1>
+				<h1>Choisis les paramètres de ta partie</h1>
 				<br/>
 				<br/>
 				<br/>
@@ -83,7 +83,7 @@
 					</tr>
 					<tr>
 						<td>
-							carte :<input type="number" name="x" value="1200" min="100" max="1500"/><input type="number" name="y" value="600" min="100" max="1000"/>
+							carte :<input type="number" name="x" value="1200" min="500" max="1500"/> x <input type="number" name="y" value="600" min="300" max="1000"/>
 						</td>
 					</tr>
 					<tr>

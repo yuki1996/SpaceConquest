@@ -21,7 +21,14 @@
 	</head>
 
 	<body>		
-
+		<table id ="header">
+			<tr>
+				<th>Space Conquest</th>
+				<!--<th>recommencer la partie</th>-->
+				<th><a href="logout.php" title="Se déconnecter"><img src="icone/deconnect.png" alt="déconnection" width="8%" height="60%" />Quitter la partie</a>
+       </th>
+			</tr>
+		</table>
 		<form method="post" action="game.php" onSubmit='testColons(colons.value, document.getElementById("planetScr").options[document.getElementById("planetScr").selectedIndex].value)'>
 			
 			<p id ="navPlayer"></p>
@@ -178,9 +185,9 @@
 	</script>
 	
 	<script>
-		document.getElementById("navPlayer").innerHTML += "Information sur le joueur<br><hr/>";  
-		document.getElementById("navPlayer").innerHTML += "Nombre de planètes en possession : " + game.tabPlayer[0].getSetPlanet.length +"<br>"; 
-		document.getElementById("navPlayer").innerHTML += "Nombre total de civil en possession : " + game.tabPlayer[0].allPopulation +"<br><hr/>";
+		document.getElementById("navPlayer").innerHTML += "<table><tr><th>Information sur le joueur</th></tr>";  
+		document.getElementById("navPlayer").innerHTML += "<tr><td>Nombre de planètes : " + game.tabPlayer[0].getSetPlanet.length +"<br></td></tr>"; 
+		document.getElementById("navPlayer").innerHTML += "<tr><td>Nombre total de civil : " + game.tabPlayer[0].allPopulation +"</td></tr></table>";
 		
 	</script>
 
@@ -292,6 +299,12 @@
 			}
 		}
 		</script>
+			<fieldset class="describe">
+				<img src="./personnages/master.jpeg" class="img_content"><p>hgdh<br>gfhgd<br>dhgjhkj<br>gkjg<br>khghjghg<br>gjhg<br>jhj<br>kh<br>Hjkhkjh>
+				
+				</p>
+				</fieldset>
+			</div>
 	</body>
 
 </html>
