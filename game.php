@@ -33,6 +33,7 @@
 				this.height = h;
 				this.tabGalaxy = new Array();
 
+				this.tabImage = new Array();
 				this.tabPlayer = new Array(nbEnemy + 1);
 				<?PHP
 					$galaxie = $_SESSION['galaxy'];
@@ -42,6 +43,7 @@
 							$pop = $player['population'];
 							$coordx = $player['x'];
 							$coordy = $player['y'];
+							$image = $player['image'];
 						}
 				?>
 				var pop = <?PHP echo $pop;?>;
@@ -50,11 +52,9 @@
 				planet.addProprietaire("player");
 				this.player = new Player(planet);
 				this.tabGalaxy.push(planet);
+				this.tabImage.push("<?PHP echo $image;?>");
 				this.tabPlayer[0] = this.player;
-			};
-
-			Game.prototype.start = function () {
-					<?PHP
+				<?PHP
 					for ($i = 1; $i <= $_SESSION['enemy']; $i++) {
 					
 						$req = "SELECT * FROM $galaxie WHERE proprietaire = 'Enemy".$i."'";
@@ -63,6 +63,7 @@
 							$pop = $player['population'];
 							$coordx = $player['x'];
 							$coordy = $player['y'];
+							$image = $player['image'];
 						}
 						echo "var pop = ".$pop.";\n";
 						echo "var coord = new Coord(".$coordx.",".$coordy.");\n";
@@ -70,6 +71,7 @@
 						echo "planet.addProprietaire(\"Enemy".$i."\");\n";
 						echo "this.tabPlayer[".$i."] = new Enemy(planet);\n";
 						echo "this.tabGalaxy.push(planet);\n";
+						echo "this.tabImage.push(\"".$image."\");\n";
 					}
 					for ($i = 1; $i <= 10; $i++) {
 						$req = "SELECT * FROM $galaxie WHERE proprietaire = 'Neutre".$i."'";
@@ -78,44 +80,58 @@
 							$pop = $player['population'];
 							$coordx = $player['x'];
 							$coordy = $player['y'];
+							$image = $player['image'];
 						}
 						echo "var pop = ".$pop.";\n";
 						echo "var coord = new Coord(".$coordx.",".$coordy.");\n";
 						echo "var planet = new Planet(coord, pop);\n";
 						echo "this.tabGalaxy.push(planet);\n";
+						echo "this.tabImage.push(\"".$image."\");\n";
 					}
-					
-
 				?>
 
 			};
 	</script>
-
 	<script>
-		var game = new Game(<?php echo $_SESSION['enemy'];?>,<?php echo $_SESSION['width'];?>,<?php echo $_SESSION['heigth'];?>);
-		game.start();
-		var maZone = document.getElementById("zone");
-		var ctx = maZone.getContext("2d");
+	function draw() {
 		<?php
-			$req = "SELECT * FROM $galaxie";
-			$res = $connexion -> query($req);
-			$i = 1;
-			while ($planet = $res->fetch()) {
-				echo "var mon_image".$i." = new Image();\n";
-				echo "mon_image".$i.".onload = function () {
-						ctx.drawImage(mon_image".$i.", ".$planet['y'].", ".$planet['x'].", 50, 50);
-				};\n";
-				echo "mon_image".$i.".src = 'planet/".$planet['image']."';\n";
-				$i++;
-				if ($planet['proprietaire'] == "Player") {
-					echo "ctx.beginPath();\n";
-					echo "ctx.lineWidth=2;\n";
-					echo "ctx.fillStyle='red';\n";
-					echo "ctx.arc(".$planet['y']." +25, ".$planet['x']."+25, 30, 0, 2 * Math.PI);\n";
-					echo "ctx.stroke();\n";
+		for ($i = 0; $i < $_SESSION['enemy'] + 11; $i++) {
+			echo "var planet".$i." = game.tabGalaxy[".$i."];\n";
+			echo "var mon_image".$i." = new Image();\n";
+			echo "mon_image".$i.".onload = function () {\n";
+			echo "ctx.drawImage(mon_image".$i.", planet".$i.".coord.getY, planet".$i.".coord.getX, 50, 50);\n";
+			echo "};\n";
+			echo "mon_image".$i.".src = 'planet/'+game.tabImage[".$i."];\n";
+			echo "if (planet".$i.".proprietaire == \"player\") {\n";
+				echo "ctx.beginPath();\n";
+				echo "ctx.lineWidth=2;\n";
+				echo "ctx.fillStyle='red';\n";
+				echo "ctx.arc(planet".$i.".coord.getY + 25, planet".$i.".coord.getX+25, 30, 0, 2 * Math.PI);\n";
+				echo "ctx.stroke();\n";
+				echo "ctx.closePath();\n";
+			echo "}\n";
+		}
+		?>
+	}
+	</script>
+		<script>
+		Game.prototype.start = function () {
+			for (var i = 0; i < this.tabPlayer.length; i++) {
+				if (i == 0) {
 				}
 			}
-		?>
+		};
+	
+	
+	</script>
+	<script>
+		var game = new Game(<?php echo $_SESSION['enemy'];?>,<?php echo $_SESSION['width'];?>,<?php echo $_SESSION['heigth'];?>);
+	
+		
+		var maZone = document.getElementById("zone");
+		var ctx = maZone.getContext("2d");
+		draw();
+			game.start();
 	</script>
 	
 	<script>
@@ -133,6 +149,7 @@
 		}
 		
 	</script>
+
 	
 	<script>
 		function getInfo(el,event) {
@@ -167,6 +184,7 @@
 			 } 
 		};
 	</script>
+
 				
 		
 	</body>
