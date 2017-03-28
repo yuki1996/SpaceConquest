@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+<!--
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+-->
+    <script type="text/javascript" src="coord.js"></script> 
+    <script type="text/javascript" src="planet.js"></script> 
+    <script type="text/javascript" src="player.js"></script> 
+    <script type="text/javascript" src="enemy.js"></script> 
+    <script type="text/javascript" src="spaceship.js"></script> 
+    <script type="text/javascript" src="game.js"></script> 
+    <title>Game</title>
+	</head>
+	<body>
+    <p id="demo"></p>
+    <script>
+      function afficheCoord(c) {
+        document.getElementById("demo").innerHTML += "coord x : " + c.getX + "<br>";
+        document.getElementById("demo").innerHTML += "coord y : " + c.getY + "<br>";
+        document.getElementById("demo").innerHTML += "<br>";
+      }
+      
+      var c1 = new Coord(3, 1);
+      afficheCoord(c1);
+    
+      var c2 = new Coord(2, 4);
+       afficheCoord(c2);
+       
+      var p1 = new Planet(c1, 5);
+      document.getElementById("demo").innerHTML += "population p1: " + p1.population + "<br>";
+      
+      var p2 = new Planet(c2, 3);
+      document.getElementById("demo").innerHTML += "population p2: " + p2.population + "<br>";
+      document.getElementById("demo").innerHTML += "<br>";
+      
+      var j = new Player(p1);
+      var planete = j.getPlanets;
+      document.getElementById("demo").innerHTML += "joueur planète: " + planete[0].population + "<br>";
+      
+      var e = new Enemy(p2);
+      var planete1 = e.getPlanets;
+      document.getElementById("demo").innerHTML += "enemy planète: " + planete1[0].population + "<br>";
+      document.getElementById("demo").innerHTML += "<br>";
+      
+      document.getElementById("demo").innerHTML += "chef de la planète p1: " + (p1.leader).constructor.name + "<br>";
+      
+      // GAME
+      var game = new Game(1); 
+      document.getElementById("demo").innerHTML += "enemy planète: " + game.nbEnemy + "<br>";
+      document.getElementById("demo").innerHTML += "population joueur: " + game.player.getPlanets[0].population + "<br>";
+      
+      function displayArray(s) {
+        document.getElementById("demo").innerHTML += "taille du tableau  " + s.length + "<br>";
+        for (var i = 0; i < s.length; i++) {
+          document.getElementById("demo").innerHTML += "Flotte p1: " + s[i].occupants + "<br>";
+        }
+      }
+      game.tabPlayer[1] = e;
+      document.getElementById("demo").innerHTML += "Player: " + game.tabPlayer[0].getPlanets[0].population + "<br>"; 
+      document.getElementById("demo").innerHTML += "enemy population: " + game.tabPlayer[1].getPlanets[0].population + "<br>";
+      afficheCoord(game.tabPlayer[0].getPlanets[0].coord);
+      game.tabPlanet.push(p1);
+      document.getElementById("demo").innerHTML += "planète à conquérir: " + game.tabPlanet[1].population + "<br>";
+      document.getElementById("demo").innerHTML += "player has played? " + game.player.hasPlayed + "<br>";
+      document.getElementById("demo").innerHTML += "Flotte p1: " + game.player.getFleet[0] + "<br>";
+      document.getElementById("demo").innerHTML += "is game over?: " + game.gameOver() + "<br>";
+      function play() {
+         document.getElementById("demo").innerHTML += "************************* " + "<br>";
+         game.player.attack(game.player.getPlanets[0], 6, game.tabPlanet[1]);
+         game.player.played(); 
+         document.getElementById("demo").innerHTML += "player has played? " + game.player.hasPlayed + "<br>";
+          //~ document.getElementById("demo").innerHTML += "Flotte p1: ";
+         document.getElementById("demo").innerHTML += "Flotte p1: " + game.player.getFleet[0].constructor.name + "<br>";
+         document.getElementById("demo").innerHTML += "population des planetes: " + game.tabPlanet[0].population + "<br>";
+         document.getElementById("demo").innerHTML += "population des planetes: " + game.tabPlanet[1].population + "<br>";
+         game.tabPlanet.push(p2);
+          document.getElementById("demo").innerHTML += "population des planetes: " + game.tabPlanet[2].population + "<br>";
+         game.turn();
+        displayArray(game.fleet);
+        document.getElementById("demo").innerHTML += "enemy fleet length: " +  game.tabPlayer[1].getFleet.length + "<br>";
+        afficheCoord(game.player.getFleet[0].coord);
+        document.getElementById("demo").innerHTML += "population des planetes: " + game.tabPlanet[0].population + "<br>";
+        document.getElementById("demo").innerHTML += "population des planetes: " + game.tabPlanet[1].population + "<br>";
+        document.getElementById("demo").innerHTML += "population des planetes: " + game.tabPlanet[2].population + "<br>";
+      }
+      
+      
+      //~ game.player.turn();
+    </script>
+    <button onclick="play()">Play</button>
+	</body>
+</html>
+
