@@ -119,3 +119,13 @@ p {
   text-align: left;
 
 }
+
+h1 {
+text-align: center;
+color: white;
+font-size: 50px;
+}
+
+#dots {
+  text-align:center;
+}
