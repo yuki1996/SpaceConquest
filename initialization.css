@@ -1,11 +1,10 @@
 body {
-	background: nav, center;
+	background: center;
 	background-image : url("home.jpg");
 	background-attachment : fixed;
 	background-repeat : no-repeat;
 	margin-top : 5em;
-	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
-	background-size: cover; /
+	background-size: cover; 
 }
 
 #content {

@@ -1,11 +1,11 @@
 body {
-	background: nav, center;
+	background: center;
 	background-image : url("home.jpg");
 	background-attachment : fixed;
 	background-repeat : no-repeat;
 	
 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
-	background-size: cover; /
+	background-size: cover; 
 }
 
 * {box-sizing:border-box}
@@ -99,16 +99,6 @@ p {
   vertical-align:middle;
 }
 
-
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
 .contents {
   margin-top : 0px;
   font-size: 14px;
@@ -118,4 +108,14 @@ p {
   padding-left: 0%;
   text-align: left;
 
+}
+
+h1 {
+text-align: center;
+color: white;
+font-size: 50px;
+}
+
+#dots {
+  text-align:center;
 }

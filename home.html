@@ -8,9 +8,10 @@
 	</head>
 
 	<body>
+    <h1>Space Conquest</h1>
 		<div class="slideshow-container">
 			<div class="mySlides">
-				<img src="./personnages/commander.jpg" class="img_content">
+				<img src="./personnages/commander.jpg" alt="commander" class="img_content">
 				<p class="contents">
 				  Bonjour Monsieur,<br>
           Comme vous le savez notre planète est en danger.<br>
@@ -20,14 +21,14 @@
 			</div>
 
 			<div class="mySlides">
-				<img src="./personnages/commander.jpg" class="img_content">
+				<img src="./personnages/commander.jpg" alt="commander" class="img_content">
 				<p class="contents">
 					Sauve ton peuple et devient le conquérant de ta galaxie! 
 				</p>
 			</div>
 
 			<div class="mySlides">
-				<img src="./personnages/commander.jpg" class="img_content">
+				<img src="./personnages/commander.jpg" alt="commander" class="img_content">
 				<p class="contents">
 					L'échec n'est pas acceptable!
 				</p>
@@ -38,7 +39,7 @@
 		</div>
 		<br>
 
-		<div style="text-align:center">
+		<div id="dots">
 			<span class="dot" onclick="currentSlide(1)"></span>
 			<span class="dot" onclick="currentSlide(2)"></span>
 			<span class="dot" onclick="currentSlide(3)"></span>
@@ -47,15 +48,12 @@
 		<script>
 			var slideIndex = 1;
 			showSlides(slideIndex);
-
 			function plusSlides(n) {
 			  showSlides(slideIndex += n);
 			}
-
 			function currentSlide(n) {
 			  showSlides(slideIndex = n);
 			}
-
 			function showSlides(n) {
 				var i;
 				var slides = document.getElementsByClassName("mySlides");
@@ -71,7 +69,6 @@
 				slides[slideIndex-1].style.display = "block";
 				dots[slideIndex-1].className += " active";
 			}
-
 		</script>
 		
 			<form method="post" action="initialization.php">
